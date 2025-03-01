@@ -1,0 +1,24 @@
+backend:
+  url: http://127.0.0.1:9091/receive
+  auth:
+    username: foo
+    password: bar
+# selector:
+#   matchLabels:
+#     test: me
+ipv6: false
+maxConnectionsPerHost: 64
+timeout: 10s
+timeoutShutdown: 0s
+concurrency: 10
+metadata: false
+tenant:
+  labels:
+    - tenant
+    - other_tenant
+  prefix: ""
+  prefixPreferSource: false
+  labelRemove: true
+  header: X-Scope-OrgID
+  default: ""
+  acceptAll: false
