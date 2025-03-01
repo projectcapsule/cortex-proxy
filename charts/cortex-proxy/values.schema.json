@@ -183,50 +183,6 @@
                             "type": "boolean"
                         },
                         "groups": {
-                            "items": {
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "rules": {
-                                        "items": {
-                                            "properties": {
-                                                "alert": {
-                                                    "type": "string"
-                                                },
-                                                "annotations": {
-                                                    "properties": {
-                                                        "description": {
-                                                            "type": "string"
-                                                        },
-                                                        "summary": {
-                                                            "type": "string"
-                                                        }
-                                                    },
-                                                    "type": "object"
-                                                },
-                                                "expr": {
-                                                    "type": "string"
-                                                },
-                                                "for": {
-                                                    "type": "string"
-                                                },
-                                                "labels": {
-                                                    "properties": {
-                                                        "severity": {
-                                                            "type": "string"
-                                                        }
-                                                    },
-                                                    "type": "object"
-                                                }
-                                            },
-                                            "type": "object"
-                                        },
-                                        "type": "array"
-                                    }
-                                },
-                                "type": "object"
-                            },
                             "type": "array"
                         },
                         "labels": {

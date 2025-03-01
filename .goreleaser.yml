@@ -8,7 +8,7 @@ before:
 gomod:
   proxy: false
 builds:
-  - main: .
+  - main: cmd/
     binary: "{{ .ProjectName }}-{{ .Os }}-{{ .Arch }}"
     env:
       - CGO_ENABLED=0
@@ -33,11 +33,15 @@ release:
   footer: |
     **Full Changelog**: https://github.com/projectcapsule/{{ .ProjectName }}/compare/{{ .PreviousTag }}...{{ .Tag }}
 
+    [!TIP]
+    [Read this documentation](https://github.com/projectcapsule/{{ .ProjectName }}/blob/{{ .Tag }}/SECURITY.md) to see how you can verify an artifacts we are releasing.
+
     **Docker Images**
     - `ghcr.io/projectcapsule/{{ .ProjectName }}:{{ .Version }}`
     - `ghcr.io/projectcapsule/{{ .ProjectName }}:latest`
 
     **Helm Chart**
+
     [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/cortex-proxy)](https://artifacthub.io/packages/search?repo=cortex-proxy)
 
     **Kubernetes compatibility**
@@ -52,8 +56,6 @@ release:
 
 
     Thanks to all the contributors! 🚀 🦄
-  extra_files:
-    - glob: ./capsule-seccomp.json
 checksum:
   name_template: 'checksums.txt'
 changelog:

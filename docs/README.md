@@ -2,7 +2,6 @@
 
 See the following topics for more information on how to use this addon:
 
-- [Installation](installation.md)
 - [Configuration](configuration.md)
 - [Monitoring](monitoring.md)
 - [Development](development.md)

@@ -87,7 +87,7 @@ image:
   # -- Set the image registry
   registry: ghcr.io
   # -- Set the image repository
-  repository: projectcapsule/cortex-tenant
+  repository: projectcapsule/cortex-proxy
   # -- Set the image pull policy.
   pullPolicy: IfNotPresent
   # -- Overrides the image tag whose default is the chart appVersion.
@@ -219,18 +219,23 @@ monitoring:
     # -- Assign additional Annotations
     annotations: {}
     # -- Prometheus Groups for the rule
-    groups:
-    - name: TranslatorAlerts
-      rules:
-        - alert: TranslatorNotReady
-          expr: cca_translator_condition{status="NotReady"} == 1
-          for: 5m
-          labels:
-            severity: warning
-          annotations:
-            summary: "Translator {{ $labels.name }} is not ready"
-            description: "The Translator {{ $labels.name }} has been in a NotReady state for over 5 minutes."
-
+    groups: []
+    # - alert: CortexProxyTooMany500s
+    #   expr: 100 * ( sum( timeseries_request_duration_seconds{code=~"5.+"} ) / sum(timeseries_request_duration_seconds) ) > 5
+    #   for: 5m
+    #   labels:
+    #     severity: warning
+    #   annotations:
+    #     description: Too many 5XXs
+    #     summary: More than 5% of all requests returned 5XX, this requires your attention
+    # - alert: CortexProxyTooMany400s
+    #   expr: 100 * ( sum( timeseries_request_duration_seconds{status=~"4.+"} ) / sum(timeseries_request_duration_seconds) ) > 5
+    #   for: 5m
+    #   labels:
+    #     severity: warning
+    #   annotations:
+    #     description: Too many 4XXs
+    #     summary: More than 5% of all requests returned 4XX, this requires your attention
   # ServiceMonitor
   serviceMonitor:
     # -- Enable ServiceMonitor

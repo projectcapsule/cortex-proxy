@@ -40,7 +40,7 @@ The following Values are available for this chart.
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` | Set the image pull policy. |
 | image.registry | string | `"ghcr.io"` | Set the image registry |
-| image.repository | string | `"projectcapsule/cortex-tenant"` | Set the image repository |
+| image.repository | string | `"projectcapsule/cortex-proxy"` | Set the image repository |
 | image.tag | string | `""` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` | Configuration for `imagePullSecrets` so that you can use a private images registry. |
 | livenessProbe | object | `{"httpGet":{"path":"/healthz","port":10080}}` | Configure the liveness probe using Deployment probe spec |
@@ -107,7 +107,7 @@ The following Values are available for this chart.
 | monitoring.enabled | bool | `false` | Enable Monitoring of the Operator |
 | monitoring.rules.annotations | object | `{}` | Assign additional Annotations |
 | monitoring.rules.enabled | bool | `true` | Enable deployment of PrometheusRules |
-| monitoring.rules.groups | list | `[{"name":"TranslatorAlerts","rules":[{"alert":"TranslatorNotReady","annotations":{"description":"The Translator {{ $labels.name }} has been in a NotReady state for over 5 minutes.","summary":"Translator {{ $labels.name }} is not ready"},"expr":"cca_translator_condition{status=\"NotReady\"} == 1","for":"5m","labels":{"severity":"warning"}}]}]` | Prometheus Groups for the rule |
+| monitoring.rules.groups | list | `[]` | Prometheus Groups for the rule |
 | monitoring.rules.labels | object | `{}` | Assign additional labels |
 | monitoring.rules.namespace | string | `""` | Install the rules into a different Namespace, as the monitoring stack one (default: the release one) |
 | monitoring.serviceMonitor.annotations | object | `{}` | Assign additional Annotations |
