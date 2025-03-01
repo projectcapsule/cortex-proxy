@@ -1,7 +1,7 @@
+# Capsule ❤️ Cortex
+
 [!IMPORTANT]
 This project is a permanent hard-fork of the [origin project](https://github.com/blind-oracle/cortex-tenant).
-
-# Capsule ❤️ Cortex
 
 ![Capsule Cortex](docs/images/logo.png)
 

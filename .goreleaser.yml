@@ -8,7 +8,7 @@ before:
 gomod:
   proxy: false
 builds:
-  - main: .
+  - main: cmd/
     binary: "{{ .ProjectName }}-{{ .Os }}-{{ .Arch }}"
     env:
       - CGO_ENABLED=0
@@ -52,8 +52,6 @@ release:
 
 
     Thanks to all the contributors! 🚀 🦄
-  extra_files:
-    - glob: ./capsule-seccomp.json
 checksum:
   name_template: 'checksums.txt'
 changelog:
