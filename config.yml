@@ -1,0 +1,28 @@
+listen: 0.0.0.0:8080
+
+backend:
+  url: http://127.0.0.1:9091/receive
+  auth:
+    egress:
+      username: foo
+      password: bar
+
+enable_ipv6: false
+max_conns_per_host: 64
+
+timeout: 10s
+timeout_shutdown: 0s
+concurrency: 10
+metadata: false
+log_response_errors: true
+
+tenant:
+  labels:
+    - tenant
+    - other_tenant
+  prefix: ""
+  prefix_prefer_source: false
+  label_remove: true
+  header: X-Scope-OrgID
+  default: ""
+  accept_all: false
