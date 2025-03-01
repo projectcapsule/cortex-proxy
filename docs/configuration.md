@@ -46,6 +46,9 @@ maxConnectionDuration: 0s
 # Select only a subset of tenant to consider for collection
 # namespaces which can not be assigned to any tenant will get the
 # default value
+selector:
+  matchLabels:
+    env: "prod"
 
 tenant:
   # List of labels examined for tenant information.
