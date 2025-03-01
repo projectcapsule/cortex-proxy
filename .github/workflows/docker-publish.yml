@@ -38,9 +38,9 @@ jobs:
           repository: ${{ github.repository_owner }}
           version: ${{ steps.extract_version.outputs.version }}
           sign-image: true
-          sbom-name: cortex-tenant
-          sbom-repository: ghcr.io/${{ github.repository_owner }}/cortex-tenant
-          signature-repository: ghcr.io/${{ github.repository_owner }}/cortex-tenant
+          sbom-name: cortex-proxy
+          sbom-repository: ghcr.io/${{ github.repository_owner }}/cortex-proxy
+          signature-repository: ghcr.io/${{ github.repository_owner }}/cortex-proxy
           main-path: ./cmd/
         env:
           REPOSITORY: ${{ github.repository }}
@@ -52,7 +52,7 @@ jobs:
       actions: read     # To read the workflow path.
     uses: slsa-framework/slsa-github-generator/.github/workflows/generator_container_slsa3.yml@v2.0.0
     with:
-      image: ghcr.io/${{ github.repository_owner }}/cortex-tenant
+      image: ghcr.io/${{ github.repository_owner }}/cortex-proxy
       digest: "${{ needs.publish-images.outputs.container-digest }}"
       registry-username: ${{ github.actor }}
     secrets:

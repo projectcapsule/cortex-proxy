@@ -1,4 +1,4 @@
-module github.com/projectcapsule/cortex-tenant
+module github.com/projectcapsule/cortex-proxy
 
 go 1.23.0
 

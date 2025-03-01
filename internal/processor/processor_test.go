@@ -15,9 +15,9 @@ import (
 	fh "github.com/valyala/fasthttp"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	"github.com/projectcapsule/cortex-tenant/internal/config"
-	"github.com/projectcapsule/cortex-tenant/internal/metrics"
-	"github.com/projectcapsule/cortex-tenant/internal/stores"
+	"github.com/projectcapsule/cortex-proxy/internal/config"
+	"github.com/projectcapsule/cortex-proxy/internal/metrics"
+	"github.com/projectcapsule/cortex-proxy/internal/stores"
 )
 
 var _ = Describe("Processor Forwarding", func() {

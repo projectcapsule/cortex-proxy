@@ -1,19 +1,19 @@
 [!IMPORTANT]
-This project is a permanent hard-fork of the origin project.
+This project is a permanent hard-fork of the [origin project](https://github.com/blind-oracle/cortex-tenant).
 
 # Capsule ❤️ Cortex
 
 ![Capsule Cortex](docs/images/logo.png)
 
 <p align="center">
-<a href="https://github.com/projectcapsule/cortex-tenant/releases/latest">
-  <img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/projectcapsule/cortex-tenant?sort=semver">
+<a href="https://github.com/projectcapsule/cortex-proxy/releases/latest">
+  <img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/projectcapsule/cortex-proxy?sort=semver">
 </a>
 <a href="https://artifacthub.io/packages/search?repo=cortex-proxy">
   <img src="https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/cortex-proxy" alt="Artifact Hub">
 </a>
-<a href="https://codecov.io/gh/projectcapsule/cortex-tenant" >
- <img src="https://codecov.io/gh/projectcapsule/cortex-tenant/graph/badge.svg?token=F9Bkp6l8zR"/>
+<a href="https://codecov.io/gh/projectcapsule/cortex-proxy" >
+ <img src="https://codecov.io/gh/projectcapsule/cortex-proxy/graph/badge.svg?token=HER3gBKdqU"/>
  </a>
 </p>
 

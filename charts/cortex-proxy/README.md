@@ -1,12 +1,12 @@
 # Capsule ❤️ Cortex
 
-![Logo](https://github.com/projectcapsule/cortex-tenant/blob/main/docs/images/logo.png)
+![Logo](https://github.com/projectcapsule/cortex-proxy/blob/main/docs/images/logo.png)
 
 ## Installation
 
 1. Install Helm Chart:
 
-        $ helm install cortex-tenant oci://ghcr.io/projectcapsule/charts/cortex-tenant  -n monitioring-system
+        $ helm install cortex-tenant oci://ghcr.io/projectcapsule/charts/cortex-proxy  -n monitioring-system
 
 3. Show the status:
 
@@ -14,7 +14,7 @@
 
 4. Upgrade the Chart
 
-        $ helm upgrade cortex-tenant oci://ghcr.io/projectcapsule/charts/cortex-tenant --version 0.4.7
+        $ helm upgrade cortex-tenant oci://ghcr.io/projectcapsule/charts/cortex-proxy --version 0.4.7
 
 5. Uninstall the Chart
 

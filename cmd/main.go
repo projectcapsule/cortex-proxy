@@ -6,6 +6,11 @@ import (
 
 	_ "github.com/KimMachineGun/automemlimit"
 	capsulev1beta2 "github.com/projectcapsule/capsule/api/v1beta2"
+	"github.com/projectcapsule/cortex-proxy/internal/config"
+	"github.com/projectcapsule/cortex-proxy/internal/controllers"
+	"github.com/projectcapsule/cortex-proxy/internal/metrics"
+	"github.com/projectcapsule/cortex-proxy/internal/processor"
+	"github.com/projectcapsule/cortex-proxy/internal/stores"
 	_ "go.uber.org/automaxprocs"
 	"k8s.io/apimachinery/pkg/runtime"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
@@ -16,12 +21,6 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 	metricsserver "sigs.k8s.io/controller-runtime/pkg/metrics/server"
-
-	"github.com/projectcapsule/cortex-tenant/internal/config"
-	"github.com/projectcapsule/cortex-tenant/internal/controllers"
-	"github.com/projectcapsule/cortex-tenant/internal/metrics"
-	"github.com/projectcapsule/cortex-tenant/internal/processor"
-	"github.com/projectcapsule/cortex-tenant/internal/stores"
 )
 
 var Version string

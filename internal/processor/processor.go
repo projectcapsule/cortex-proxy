@@ -18,12 +18,11 @@ import (
 	"github.com/google/uuid"
 	me "github.com/hashicorp/go-multierror"
 	"github.com/pkg/errors"
+	"github.com/projectcapsule/cortex-proxy/internal/config"
+	"github.com/projectcapsule/cortex-proxy/internal/metrics"
+	"github.com/projectcapsule/cortex-proxy/internal/stores"
 	"github.com/prometheus/prometheus/prompb"
 	fh "github.com/valyala/fasthttp"
-
-	"github.com/projectcapsule/cortex-tenant/internal/config"
-	"github.com/projectcapsule/cortex-tenant/internal/metrics"
-	"github.com/projectcapsule/cortex-tenant/internal/stores"
 )
 
 type result struct {

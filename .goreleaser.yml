@@ -1,4 +1,4 @@
-project_name: capsule
+project_name: cortex-proxy
 env:
   - COSIGN_EXPERIMENTAL=true
   - GO111MODULE=on
@@ -38,11 +38,7 @@ release:
     - `ghcr.io/projectcapsule/{{ .ProjectName }}:latest`
 
     **Helm Chart**
-    View this release on [Artifact Hub](https://artifacthub.io/packages/helm/projectcapsule/capsule/{{ .Version }}) or use the OCI helm chart:
-
-    - `ghcr.io/projectcapsule/charts/{{ .ProjectName }}:{{ .Version }}`
-
-    [Review the Major Changes section first before upgrading to a new version](https://artifacthub.io/packages/helm/projectcapsule/capsule/{{ .Version }}#major-changes)
+    [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/cortex-proxy)](https://artifacthub.io/packages/search?repo=cortex-proxy)
 
     **Kubernetes compatibility**
 

@@ -6,7 +6,7 @@ GOARCH          ?= $(shell go env GOARCH)
 
 # Defaults
 REGISTRY        ?= ghcr.io
-REPOSITORY      ?= projectcapsule/cortex-tenant
+REPOSITORY      ?= projectcapsule/cortex-proxy
 GIT_TAG_COMMIT  ?= $(shell git rev-parse --short $(VERSION))
 GIT_MODIFIED_1  ?= $(shell git diff $(GIT_HEAD_COMMIT) $(GIT_TAG_COMMIT) --quiet && echo "" || echo ".dev")
 GIT_MODIFIED_2  ?= $(shell git diff --quiet && echo "" || echo ".dirty")
@@ -120,8 +120,8 @@ ko-publish-all: ko-publish-controller
 SRC_ROOT = $(shell git rev-parse --show-toplevel)
 
 helm-controller-version:
-	$(eval VERSION := $(shell grep 'appVersion:' charts/cortex-tenant/Chart.yaml | awk '{print $$2}'))
-	$(eval KO_TAGS := $(shell grep 'appVersion:' charts/cortex-tenant/Chart.yaml | awk '{print $$2}'))
+	$(eval VERSION := $(shell grep 'appVersion:' charts/cortex-proxy/Chart.yaml | awk '{print $$2}'))
+	$(eval KO_TAGS := $(shell grep 'appVersion:' charts/cortex-proxy/Chart.yaml | awk '{print $$2}'))
 
 
 helm-docs: helm-doc
@@ -131,7 +131,7 @@ helm-lint: ct
 	@$(CT) lint --config .github/configs/ct.yaml --validate-yaml=false --all --debug
 
 helm-schema: helm-plugin-schema
-	cd charts/cortex-tenant && $(HELM) schema -output values.schema.json
+	cd charts/cortex-proxy && $(HELM) schema -output values.schema.json
 
 helm-test: kind ct
 	@$(KIND) create cluster --wait=60s --name $(KIND_K8S_NAME) --image=kindest/node:$(KIND_K8S_VERSION)
@@ -172,13 +172,13 @@ e2e-install-addon: e2e-load-image
 	    --dependency-update \
 		--debug \
 		--install \
-		--namespace cortex-tenant \
+		--namespace monitoring-system \
 		--create-namespace \
 		--set 'image.pullPolicy=Never' \
 		--set "image.tag=$(VERSION)" \
 		--set args.logLevel=10 \
-		cortex-tenant \
-		./charts/cortex-tenant
+		cortex-proxy \
+		./charts/cortex-proxy
 
 e2e-install-distro:
 	@$(KUBECTL) kustomize e2e/objects/flux/ | kubectl apply -f -

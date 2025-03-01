@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	capsulev1beta2 "github.com/projectcapsule/capsule/api/v1beta2"
-	"github.com/projectcapsule/cortex-tenant/internal/stores"
+	"github.com/projectcapsule/cortex-proxy/internal/stores"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
 	. "github.com/onsi/gomega"

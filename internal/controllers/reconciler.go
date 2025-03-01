@@ -6,13 +6,12 @@ import (
 
 	"github.com/go-logr/logr"
 	capsulev1beta2 "github.com/projectcapsule/capsule/api/v1beta2"
+	"github.com/projectcapsule/cortex-proxy/internal/metrics"
+	"github.com/projectcapsule/cortex-proxy/internal/stores"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
-
-	"github.com/projectcapsule/cortex-tenant/internal/metrics"
-	"github.com/projectcapsule/cortex-tenant/internal/stores"
 )
 
 // CapsuleArgocdReconciler reconciles a CapsuleArgocd object.
