@@ -100,8 +100,9 @@ func main() {
 	metricsRecorder := metrics.MustMakeRecorder()
 
 	tenants := &controllers.TenantController{
-		Client: mgr.GetClient(),
-		Scheme: mgr.GetScheme(),
+		Client:   mgr.GetClient(),
+		Scheme:   mgr.GetScheme(),
+		Selector: cfg.Selector.Selector(),
 		// Log:     ctrl.Log.WithName("Store").WithName("Config"),
 		Metrics: metricsRecorder,
 		Store:   store,

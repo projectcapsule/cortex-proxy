@@ -90,6 +90,10 @@
                 "metadata": {
                     "type": "boolean"
                 },
+                "selector": {
+                    "properties": {},
+                    "type": "object"
+                },
                 "tenant": {
                     "properties": {
                         "acceptAll": {

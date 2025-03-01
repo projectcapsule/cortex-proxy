@@ -66,6 +66,7 @@ The following Values are available for this chart.
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| config.backend | object | `{"auth":{"password":"","username":""},"url":"http://cortex-distributor.cortex.svc:8080/api/v1/push"}` | Configure the backend to redirect all the requests to |
 | config.backend.auth.password | string | `""` | Password |
 | config.backend.auth.username | string | `""` | Username |
 | config.backend.url | string | `"http://cortex-distributor.cortex.svc:8080/api/v1/push"` | Where to send the modified requests (Cortex) |
@@ -74,6 +75,7 @@ The following Values are available for this chart.
 | config.maxConnectionDuration | string | `"0s"` | Maximum duration to keep outgoing connections alive (to Cortex/Mimir) Useful for resetting L4 load-balancer state Use 0 to keep them indefinitely |
 | config.maxConnectionsPerHost | int | `64` | This parameter sets the limit for the count of outgoing concurrent connections to Cortex / Mimir. By default it's 64 and if all of these connections are busy you will get errors when pushing from Prometheus. If your `target` is a DNS name that resolves to several IPs then this will be a per-IP limit. |
 | config.metadata | bool | `false` | Whether to forward metrics metadata from Prometheus to Cortex Since metadata requests have no timeseries in them - we cannot divide them into tenants So the metadata requests will be sent to the default tenant only, if one is not defined - they will be dropped |
+| config.selector | object | `{}` | Specify which tenants should be selected for this proxy. Tenants not matching the labels are not considered by the controller. |
 | config.tenant.acceptAll | bool | `false` | Enable if you want all metrics from Prometheus to be accepted with a 204 HTTP code regardless of the response from Cortex. This can lose metrics if Cortex is throwing rejections. |
 | config.tenant.default | string | `"cortex-tenant-default"` | Which tenant ID to use if the label is missing in any of the timeseries If this is not set or empty then the write request with missing tenant label will be rejected with HTTP code 400 |
 | config.tenant.header | string | `"X-Scope-OrgID"` | To which header to add the tenant ID |

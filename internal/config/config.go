@@ -15,6 +15,8 @@ type Config struct {
 
 	EnableIPv6 bool `yaml:"ipv6"`
 
+	Selector LabelSelector `yaml:"selector,omitempty"`
+
 	Timeout         time.Duration `yaml:"timeout"`
 	TimeoutShutdown time.Duration `yaml:"timeoutShutdown"`
 	Concurrency     int           `yaml:"concurrency"`

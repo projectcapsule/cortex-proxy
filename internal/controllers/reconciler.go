@@ -9,24 +9,50 @@ import (
 	"github.com/projectcapsule/cortex-proxy/internal/metrics"
 	"github.com/projectcapsule/cortex-proxy/internal/stores"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
+	"sigs.k8s.io/controller-runtime/pkg/event"
+	"sigs.k8s.io/controller-runtime/pkg/predicate"
 )
 
-// CapsuleArgocdReconciler reconciles a CapsuleArgocd object.
 type TenantController struct {
 	client.Client
-	Metrics *metrics.Recorder
-	Scheme  *runtime.Scheme
-	Store   *stores.TenantStore
-	Log     logr.Logger
+	Metrics  *metrics.Recorder
+	Scheme   *runtime.Scheme
+	Store    *stores.TenantStore
+	Log      logr.Logger
+	Selector *metav1.LabelSelector
 }
 
 func (r *TenantController) SetupWithManager(mgr ctrl.Manager) error {
-	return ctrl.NewControllerManagedBy(mgr).
-		For(&capsulev1beta2.Tenant{}).
-		Complete(r)
+	builder := ctrl.NewControllerManagedBy(mgr).For(&capsulev1beta2.Tenant{})
+
+	// If a selector is provided, add an event filter so that only matching tenants trigger reconcile.
+	if r.Selector != nil {
+		selector, err := metav1.LabelSelectorAsSelector(r.Selector)
+		if err != nil {
+			return fmt.Errorf("invalid label selector: %w", err)
+		}
+
+		builder = builder.WithEventFilter(predicate.Funcs{
+			CreateFunc: func(e event.CreateEvent) bool {
+				return selector.Matches(labels.Set(e.Object.GetLabels()))
+			},
+			UpdateFunc: func(e event.UpdateEvent) bool {
+				return selector.Matches(labels.Set(e.ObjectNew.GetLabels()))
+			},
+			DeleteFunc: func(e event.DeleteEvent) bool {
+				return selector.Matches(labels.Set(e.Object.GetLabels()))
+			},
+			GenericFunc: func(e event.GenericEvent) bool {
+				return selector.Matches(labels.Set(e.Object.GetLabels()))
+			},
+		})
+	}
+
+	return builder.Complete(r)
 }
 
 func (r *TenantController) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
@@ -48,10 +74,22 @@ func (r *TenantController) Reconcile(ctx context.Context, req ctrl.Request) (ctr
 }
 
 // First execttion of the controller to load the settings (without manager cache).
-func (r *TenantController) Init(ctx context.Context, client client.Client) (err error) {
+func (r *TenantController) Init(ctx context.Context, c client.Client) (err error) {
 	tnts := &capsulev1beta2.TenantList{}
 
-	if err := client.List(ctx, tnts); err != nil {
+	var opts []client.ListOption
+
+	// If a selector is provided, add it as a list option.
+	if r.Selector != nil {
+		selector, err := metav1.LabelSelectorAsSelector(r.Selector)
+		if err != nil {
+			return fmt.Errorf("invalid label selector: %w", err)
+		}
+
+		opts = append(opts, client.MatchingLabelsSelector{Selector: selector})
+	}
+
+	if err := c.List(ctx, tnts, opts...); err != nil {
 		return fmt.Errorf("could not load tenants: %w", err)
 	}
 

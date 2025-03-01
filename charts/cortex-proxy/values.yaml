@@ -32,7 +32,7 @@ config:
   # By default it's 64 and if all of these connections are busy you will get errors when pushing from Prometheus.
   # If your `target` is a DNS name that resolves to several IPs then this will be a per-IP limit.
   maxConnectionsPerHost: 64
-
+  # -- Configure the backend to redirect all the requests to
   backend:
     # -- Where to send the modified requests (Cortex)
     url: http://cortex-distributor.cortex.svc:8080/api/v1/push
@@ -42,7 +42,10 @@ config:
       username: ""
       # -- Password
       password: ""
-
+  # -- Specify which tenants should be selected for this proxy.
+  # Tenants not matching the labels are not considered by the controller.
+  selector: {}
+  # Tenant Properties
   tenant:
     # -- List of labels examined for tenant information. If set takes precedent over `label`
     labels: []

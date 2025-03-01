@@ -35,6 +35,9 @@ timeout: 7s
 timeoutShutdown: 2s
 maxConnectionDuration: 10s
 maxConnectionsPerHost: 128
+selector:
+  matchLabels:
+    special: "tenants"
 `
 		tmpFile, err := os.CreateTemp("", "config-test-*.yaml")
 		Expect(err).NotTo(HaveOccurred())
