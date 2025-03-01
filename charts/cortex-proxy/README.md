@@ -107,7 +107,7 @@ The following Values are available for this chart.
 | monitoring.enabled | bool | `false` | Enable Monitoring of the Operator |
 | monitoring.rules.annotations | object | `{}` | Assign additional Annotations |
 | monitoring.rules.enabled | bool | `true` | Enable deployment of PrometheusRules |
-| monitoring.rules.groups | list | `[{"name":"TranslatorAlerts","rules":[{"alert":"TranslatorNotReady","annotations":{"description":"The Translator {{ $labels.name }} has been in a NotReady state for over 5 minutes.","summary":"Translator {{ $labels.name }} is not ready"},"expr":"cca_translator_condition{status=\"NotReady\"} == 1","for":"5m","labels":{"severity":"warning"}}]}]` | Prometheus Groups for the rule |
+| monitoring.rules.groups | list | `[{"alert":"CortexProxyTooMany500s","annotations":{"description":"Too many 5XXs","summary":"More than 5% of all requests returned 5XX, this requires your attention"},"expr":"100 * ( sum( timeseries_request_duration_seconds{code=~\"5.+\"} ) / sum(timeseries_request_duration_seconds) ) > 5","for":"5m","labels":{"severity":"warning"}},{"alert":"CortexProxyTooMany400s","annotations":{"description":"Too many 4XXs","summary":"More than 5% of all requests returned 4XX, this requires your attention"},"expr":"100 * ( sum( timeseries_request_duration_seconds{status=~\"4.+\"} ) / sum(timeseries_request_duration_seconds) ) > 5","for":"5m","labels":{"severity":"warning"}}]` | Prometheus Groups for the rule |
 | monitoring.rules.labels | object | `{}` | Assign additional labels |
 | monitoring.rules.namespace | string | `""` | Install the rules into a different Namespace, as the monitoring stack one (default: the release one) |
 | monitoring.serviceMonitor.annotations | object | `{}` | Assign additional Annotations |
