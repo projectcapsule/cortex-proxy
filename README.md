@@ -22,6 +22,7 @@ Prometheus remote write proxy which marks timeseries with a Cortex/Mimir tenant 
 ## Overview
 
 ![Architecture](docs/images/capsule-cortex.gif)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fprojectcapsule%2Fcortex-proxy.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fprojectcapsule%2Fcortex-proxy?ref=badge_shield)
 
 Cortex/Mimir tenants (separate namespaces where metrics are stored to and queried from) are identified by `X-Scope-OrgID` HTTP header on both writes and queries.
 
@@ -42,3 +43,7 @@ See the [Documentation](docs/README.md) for more information on how to use this 
 ## Support
 
 This addon is developed by the community. For enterprise support (production ready setup,tailor-made features) reach out to [Capsule Supporters](https://projectcapsule.dev/support/)
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fprojectcapsule%2Fcortex-proxy.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fprojectcapsule%2Fcortex-proxy?ref=badge_large)
