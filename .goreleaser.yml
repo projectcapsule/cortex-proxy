@@ -33,8 +33,8 @@ release:
   footer: |
     **Full Changelog**: https://github.com/projectcapsule/{{ .ProjectName }}/compare/{{ .PreviousTag }}...{{ .Tag }}
 
-    [!TIP]
-    [Read this documentation](https://github.com/projectcapsule/{{ .ProjectName }}/blob/{{ .Tag }}/SECURITY.md) to see how you can verify an artifacts we are releasing.
+    > [!TIP]
+    > [Read this documentation](https://github.com/projectcapsule/{{ .ProjectName }}/blob/{{ .Tag }}/SECURITY.md) to see how you can verify an artifacts we are releasing.
 
     **Docker Images**
     - `ghcr.io/projectcapsule/{{ .ProjectName }}:{{ .Version }}`
@@ -46,9 +46,9 @@ release:
 
     **Kubernetes compatibility**
 
-    [!IMPORTANT]
-    Note that the Capsule project offers support only for the latest minor version of Kubernetes.
-    Backwards compatibility with older versions of Kubernetes and OpenShift is [offered by vendors](https://projectcapsule.dev/support/).
+    > [!IMPORTANT]
+    > Note that the Capsule project offers support only for the latest minor version of Kubernetes.
+    > Backwards compatibility with older versions of Kubernetes and OpenShift is [offered by vendors](https://projectcapsule.dev/support/).
 
     | Kubernetes version | Minimum required |
     |--------------------|------------------|
