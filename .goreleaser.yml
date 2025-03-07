@@ -8,7 +8,7 @@ before:
 gomod:
   proxy: false
 builds:
-  - main: cmd/
+  - main: ./cmd/
     binary: "{{ .ProjectName }}-{{ .Os }}-{{ .Arch }}"
     env:
       - CGO_ENABLED=0
@@ -20,14 +20,6 @@ builds:
     flags:
       - -trimpath
     mod_timestamp: '{{ .CommitTimestamp }}'
-    ldflags:
-      - >-
-          -X main.Version={{ .Tag }}
-          -X main.GitCommit={{ .Commit }}
-          -X main.GitTag={{ .Tag }}
-          -X main.GitDirty={{ .Date }}
-          -X main.BuildTime={{ .Date }}
-          -X main.GitRepo={{ .ProjectName }}
 release:
   prerelease: auto
   footer: |
@@ -53,7 +45,6 @@ release:
     | Kubernetes version | Minimum required |
     |--------------------|------------------|
     | `v1.31`            | `>= 1.31.0`      |
-
 
     Thanks to all the contributors! 🚀 🦄
 checksum:
