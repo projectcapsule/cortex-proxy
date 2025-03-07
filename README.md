@@ -1,7 +1,7 @@
 # Capsule ❤️ Cortex
 
-[!IMPORTANT]
-This project is a permanent hard-fork of the [origin project](https://github.com/blind-oracle/cortex-tenant).
+> [!IMPORTANT]
+> This project is a permanent hard-fork of the [origin project](https://github.com/blind-oracle/cortex-tenant).
 
 ![Capsule Cortex](docs/images/logo.png)
 
@@ -9,6 +9,7 @@ This project is a permanent hard-fork of the [origin project](https://github.com
 <a href="https://github.com/projectcapsule/cortex-proxy/releases/latest">
   <img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/projectcapsule/cortex-proxy?sort=semver">
 </a>
+<a href="https://app.fossa.com/projects/git%2Bgithub.com%2Fprojectcapsule%2Fcortex-proxy?ref=badge_small" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Fprojectcapsule%2Fcortex-proxy.svg?type=small"/></a>
 <a href="https://artifacthub.io/packages/search?repo=cortex-proxy">
   <img src="https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/cortex-proxy" alt="Artifact Hub">
 </a>
@@ -42,3 +43,7 @@ See the [Documentation](docs/README.md) for more information on how to use this 
 ## Support
 
 This addon is developed by the community. For enterprise support (production ready setup,tailor-made features) reach out to [Capsule Supporters](https://projectcapsule.dev/support/)
+
+## License
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fprojectcapsule%2Fcortex-proxy.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fprojectcapsule%2Fcortex-proxy?ref=badge_large)
